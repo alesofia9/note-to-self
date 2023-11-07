@@ -1,56 +1,75 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
-const util = require('util'); //maybe can delete...// 
-const readFileAsync = util.promisify(fs.readFile);
-const writeFileAsync = util.promisify(fs.writeFile);
-
-//Express App...//
-const app = express();
 const PORT = process.env.PORT || 8000;
-
-app.use(express.urlencoded({extended: true }));
+const app = express();
+const fs = require('fs');
+const allNotes = require('./db/db.json');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
-app.use(express.static('./public'));
+// HTML & API routes...//
+app.get('/api/notes', (req, res) => {
+    res.json(allNotes.slice(1));
+});
 
-//HTML and API routes...// 
-app.get('/notes', (req, res) =>
-    res.sendFile(path.join(__dirname, './public/notes.html'))
-);
-
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+});
 
-app.get('*', function(req, res) {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
-app.get('/api/notes', function(req, res) {
-    readFileAsync('./db/db.json', 'utf8').then(function(data) {
-        notes = [].concat(JSON.parse(data))
-        res.json(notes);
-    })
+function createNewNote(body, Notesarray) {
+    const newNote = body;
+    if (!Array.isArray(Notesarray))
+        Notesarray = [];
+    
+    if (Notesarray.length === 0)
+        Notesarray.push(0);
+
+    body.id = Notesarray[0];
+    Notesarray[0]++;
+
+    Notesarray.push(newNote);
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify(Notesarray, null, 2)
+    );
+    return newNote;
+}
+
+app.post('/api/notes', (req, res) => {
+    const newNote = createNewNote(req.body, allNotes);
+    res.json(newNote);
 });
 
-app.post('/api/notes', function(req, res) {
-    const note = req.body;
-    readFileAsync('./db/db.json', 'utf8').then(function(data) {
-        const notes = [].concat(JSON.parse(data));
-        note.id = notes.length + 1
-        notes.push(note);
-        return notes
-    }).then(function(notes) {
-        writeFileAsync('./db/db.json', JSON.stringify(notes))
-        res.json(note);
-    })
-});
+function deleteNote(id, Notesarray) {
+    for (let i = 0; i < Notesarray.length; i++) {
+        let note = Notesarray[i];
 
-//Listening//
+        if (note.id == id) {
+            Notesarray.splice(i, 1);
+            fs.writeFileSync(
+                path.join(__dirname, './db/db.json'),
+                JSON.stringify(Notesarray, null, 2)
+            );
+
+            break;
+        }
+    }
+}
+
+app.delete('/api/notes/:id', (req, res) => {
+    deleteNote(req.params.id, allNotes);
+    res.json(true);
+});
 app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT}`)
+  console.log(`Example app listening at http://localhost:${PORT}`)
 );
-//Fix POST server. Get request to save html file, and possbily fix the buttons? // 
