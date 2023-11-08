@@ -38,7 +38,7 @@ Run npm install in order to install the following npm package dependencies as sp
 
 You can use the application locally by running node server.js on the Command line to see the back-end information and can open the local host link provided to your preferred browser to see the front end application. 
 
-URL to Repository:
+URL to Repository: https://github.com/alesofia9/note-to-self 
   
 ## [Usage](#table-of-contents)
   
