@@ -26,7 +26,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
-function createNewNote(body, Notesarray) {
+function makeNewNote(body, Notesarray) {
     const newNote = body;
     if (!Array.isArray(Notesarray))
         Notesarray = [];
@@ -46,7 +46,7 @@ function createNewNote(body, Notesarray) {
 }
 
 app.post('/api/notes', (req, res) => {
-    const newNote = createNewNote(req.body, allNotes);
+    const newNote = makeNewNote(req.body, allNotes);
     res.json(newNote);
 });
 

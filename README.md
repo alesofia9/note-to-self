@@ -11,48 +11,38 @@
 * [License](#license)
       
 * [Contributing](#contributing)
-* [Tests](#tests)
 * [Questions](#questions)
     
 ## [Description](#table-of-contents)
     
-MAKE-A-LOGO is a beta Node.js file that generates an SVG logo depending on user input in VS Code temrinal. 
+NOTE-TO-SELF is a beta Express.js file that the user can create, save, and delete notes using the site linked and installed using Heroku. 
 
-Below is what the application looks like on VS Code:
+Below is what the application looks like:
 
-![Alt text](/Screenshot%202023-10-31%20at%2010.52.09 PM.png)
+![Alt text](/Screenshot%202023-11-07%20at%206.19.28 PM.png)
 
 
-And here is what the logo will look like:
-
-![Alt text](/Screenshot%202023-10-31%20at%2010.54.13 PM.png)
 
 
 ## [Installation](#table-of-contents)
   
-To generate your own SVG Logo, git clone the repo down to your local so you have the Node project on your local.
+Clone the repo down to your local so you have the Express project on your local development.
 
 Run npm install in order to install the following npm package dependencies as specified in the package.json:
 
 -npm init
 
--npm install inquirer
+-npm install server-js
 
--npm install jest
+-npm install express
 
-inquirer will prompt you for your inputs from the command line. jest will test run the shapes to make sure they generate accordingly.
-
-The application will start by running node index.js in the command line. When you run node index.js, the application uses the inquirer package to prompt you in the command line with a series of questions about your Logo specifics.
-
-Answer the prompts in your command line to generate the Logo.
-
-After answering all the prompts, your Logo file will be named 'logo.svg' and will be ready for you to preview by right clicking the file and Open a Live Server or Preview SVG if extention has been installed.
+You can use the application locally by running node server.js on the Command line to see the back-end information and can open the local host link provided to your preferred browser to see the front end application. 
 
 URL to Repository:
   
 ## [Usage](#table-of-contents)
   
-Right click server.js file to Open Terminal. On the command line, type "node server.js" to initiate server port and use Insomnia to utilize application.
+Right click server.js file to Open Terminal. On the command line, type "node server.js" to initiate server port and use Insomnia, local host link, or deployed link to utilize application.
     
 
 ## [License](#table-of-contents)
@@ -66,21 +56,18 @@ The application is covered under the following license:
   
 ## [Contributing](#table-of-contents)
     
-StackOverflow: https://stackoverflow.com/questions/57169793/error-err-require-esm-how-to-use-es6-modules-in-node-12 
+StackOverflow: https://stackoverflow.com/questions/76157189/cannot-get-api-to-work-when-testing-in-insomnia, 
+https://stackoverflow.com/questions/70937653/how-can-i-solve-an-404-not-found-error-with-post-request-using-insomnia-and-word  
 
-Jest: https://www.npmjs.com/package/jest
+NPM Server: https://www.npmjs.com/package/server-js?activeTab=readme
 
-Wikipedia: https://en.wikipedia.org/wiki/SVG
+Brightcove Video Cloud
+https://apis.support.brightcove.com/general/use-insomnia-api-requests.html 
 
-MDN Web Docs: 
-https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial 
-https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes 
-https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts
+Insomnia Docs
+https://docs.insomnia.rest/insomnia/send-your-first-request 
 
-## [Tests](#table-of-contents)
-  
-To test application, right click the shapes.test document, open the Command Line on VS Code and input 'npm run test' to initiate jest.
-  
+
 ## [Questions](#table-of-contents)
 
 Contact me if you have any questions:
