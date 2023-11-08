@@ -30,15 +30,13 @@ Clone the repo down to your local so you have the Express project on your local 
 
 Run npm install in order to install the following npm package dependencies as specified in the package.json:
 
--npm init
-
--npm install server-js
-
 -npm install express
 
 You can use the application locally by running node server.js on the Command line to see the back-end information and can open the local host link provided to your preferred browser to see the front end application. 
 
 URL to Repository: https://github.com/alesofia9/note-to-self 
+
+URL to Application: https://note-to-self2-b8fcb3ac4339.herokuapp.com/ 
   
 ## [Usage](#table-of-contents)
   
